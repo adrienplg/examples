@@ -161,22 +161,12 @@ def get_json_file(url):
     """ Get a JSON file from a given URL """
 
     response = requests.get(url)
-    leads = json.loads(response.text)
-    # Object returned by the URL is a list, therefore returning its content
-    return leads
+    return json.loads(response.text)
 
 
 url = 'https://gist.githubusercontent.com/pplante/a2a4532d7125804dfbe4/raw/89d02a5d5d2aa7e2cb9ad968b4d58b6911915aa4/guest_cards.json'
-#leads_file = get_json_file(url)
-#marketing_list = load_leads(leads_file)
-#marketing_list = numbers_per_quarter(marketing_list)
-#marketing_list = quarter_costs(marketing_list)
-#print_report(marketing_list)
-
-my_date = date(2015, 2, 4)
-begin = date(2015, 1, 1)
-end = date(2015, 2, 5)
-print(my_date)
-is_valid = begin < my_date and my_date < end
-print(is_valid)
-
+leads_file = get_json_file(url)
+marketing_list = load_leads(leads_file)
+marketing_list = numbers_per_quarter(marketing_list)
+marketing_list = quarter_costs(marketing_list)
+print_report(marketing_list)
